@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>First bridge</h1>
+  <div class="firstbridge flex w-full">
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
   </div>
 </template>
 
@@ -8,17 +9,18 @@
 export default {
   data() {
     return {
-      firstBridge: [
-        {
-          //   id: 1,
-          title: "Blackfrairs",
-          description: "London bridges first bridge..",
-          info: "This bridge is open",
-        },
-      ],
+      //   id: 1,
+      title: "Blackfrairs",
+      description: "London bridges first bridge..",
+      info: "This bridge is open",
     };
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.firstbridge {
+  width: 100%;
+  min-width: 300px;
+}
+</style>

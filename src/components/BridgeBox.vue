@@ -91,7 +91,6 @@ export default {
   flex-direction: column;
   position: absolute;
   top: 300px;
-  right: 60px;
   width: 100%;
 }
 </style>
