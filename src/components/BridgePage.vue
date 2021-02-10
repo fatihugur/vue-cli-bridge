@@ -1,9 +1,21 @@
 <template>
   <div class="hello-bridge">
     <the-header></the-header>
-    <div class="map">
-      <the-map></the-map>
+    <div class="container-main">
+      <!-- container news -->
+      <div class="continer-news">
+        <div class="newsall">
+          <news-list v-if="selectedList === 'news-list'"></news-list>
+        </div>
+      </div>
+      <!-- container maps-->
+      <div class="container-maps">
+        <div class="map">
+          <the-map></the-map>
+        </div>
+      </div>
     </div>
+
     <div>
       <bridge-box></bridge-box>
     </div>
@@ -14,9 +26,25 @@
 import BridgeBox from "./BridgeBox.vue";
 import TheHeader from "./TheHeader.vue";
 import TheMap from "./TheMap.vue";
+import NewsList from "./NewsList.vue";
 
 export default {
-  components: { TheHeader, TheMap, BridgeBox },
+  data() {
+    return {
+      selectedList: true,
+    };
+  },
+  components: {
+    TheHeader,
+    TheMap,
+    BridgeBox,
+    NewsList,
+  },
+  methods: {
+    setSelectedList(list) {
+      this.selectedList = list;
+    },
+  },
 };
 </script>
 
@@ -25,7 +53,7 @@ export default {
 map {
   width: 100%;
   min-height: 100vh;
-  color: whitesmoke;
+  color: grey;
 }
 h3 {
   margin: 40px 0 0;

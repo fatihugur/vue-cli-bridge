@@ -36,6 +36,7 @@ import BaseBox from "./UI/BaseBox.vue";
 import BaseButton from "./UI/BaseButton.vue";
 import BridgeOne from "./BridgeOne.vue";
 import BridgeTwo from "./BridgeTwo.vue";
+
 export default {
   components: {
     BaseBox,
@@ -46,7 +47,7 @@ export default {
 
   data() {
     return {
-      selectedTab: "bridge-one",
+      selectedTab: "bridge-two",
     };
   },
 
@@ -92,5 +93,9 @@ export default {
   position: absolute;
   top: 300px;
   width: 100%;
+}
+.newsall {
+  min-width: 100%;
+  min-height: 100;
 }
 </style>

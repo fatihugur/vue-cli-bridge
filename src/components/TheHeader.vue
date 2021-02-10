@@ -15,7 +15,7 @@
     </div>
     <div>
       <div class="news">
-        <button class="btn btn-news">
+        <button @click="setSelectedList('select-list')" class="btn btn-news">
           <img alt="news icon" src="@/assets/icon_news.svg" />
         </button>
       </div>
@@ -23,7 +23,9 @@
   </header>
 </template>
 <script>
-export default {};
+export default {
+  props: {},
+};
 </script>
 <style scoped>
 header {
