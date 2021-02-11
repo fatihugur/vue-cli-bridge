@@ -1,23 +1,34 @@
 <template>
   <div class="hello-bridge">
-    <the-header></the-header>
-    <div class="container-main">
-      <!-- container news -->
-      <div class="continer-news">
-        <div class="newsall">
+    <div class="w-full">
+      <div class="h-full">
+        <div class="newsall z-55 p-4">
           <news-list v-if="selectedList === 'news-list'"></news-list>
         </div>
       </div>
-      <!-- container maps-->
-      <div class="container-maps">
-        <div class="map">
-          <the-map></the-map>
-        </div>
+    </div>
+    <!-- end newsall container -->
+    <!-- container news button -->
+    <div class="continer-news">
+      <div class="news">
+        <button @click="setSelectedList('news-list')" class="btn btn-news">
+          <img alt="news icon" src="@/assets/icon_news.svg" />
+        </button>
       </div>
     </div>
 
-    <div>
-      <bridge-box></bridge-box>
+    <the-header></the-header>
+    <div class="container-main flex relative">
+      <!-- container maps-->
+      <div class="container-maps ">
+        <div class="map w-full h-full overflow-hidden">
+          <the-map></the-map>
+        </div>
+        <div>
+          <bridge-box></bridge-box>
+        </div>
+      </div>
+      <!-- end container maps -->
     </div>
   </div>
 </template>
@@ -31,7 +42,7 @@ import NewsList from "./NewsList.vue";
 export default {
   data() {
     return {
-      selectedList: true,
+      selectedList: false,
     };
   },
   components: {
@@ -68,5 +79,31 @@ li {
 }
 a {
   color: #010704;
+}
+.btn-news {
+  display: none;
+}
+
+img {
+  vertical-align: middle;
+}
+.newsall {
+  z-index: 10;
+}
+@media (max-width: 615px) {
+  .btn-news {
+    display: block;
+    border-radius: 50%;
+    border: 1px solid #0f5b69;
+    background: #0f5b69;
+    padding: 10px 14px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 61px;
+    height: 61px;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+  }
 }
 </style>

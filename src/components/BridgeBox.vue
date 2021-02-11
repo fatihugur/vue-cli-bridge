@@ -84,7 +84,7 @@ export default {
   position: absolute;
   top: 170px;
   left: 60px;
-  z-index: 10;
+  z-index: 9;
   width: 100%;
 }
 .info-box {
@@ -93,9 +93,11 @@ export default {
   position: absolute;
   top: 300px;
   width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 .newsall {
   min-width: 100%;
-  min-height: 100;
+  min-height: 100%;
 }
 </style>

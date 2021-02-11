@@ -13,13 +13,13 @@
         </div>
       </div>
     </div>
-    <div>
+    <!-- <div>
       <div class="news">
         <button @click="setSelectedList('select-list')" class="btn btn-news">
           <img alt="news icon" src="@/assets/icon_news.svg" />
         </button>
       </div>
-    </div>
+    </div> -->
   </header>
 </template>
 <script>
