@@ -42,7 +42,7 @@ import NewsList from "./NewsList.vue";
 export default {
   data() {
     return {
-      selectedList: false,
+      selectedList: true,
     };
   },
   components: {
@@ -89,7 +89,9 @@ img {
 }
 .newsall {
   z-index: 10;
+  width: 350px;
 }
+
 @media (max-width: 615px) {
   .btn-news {
     display: block;

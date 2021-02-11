@@ -3,7 +3,6 @@
     <header>
       <h1>Nieuwsberichten</h1>
     </header>
-    <new-news @add-news="addNews"></new-news>
     <ul class="m-0 p-0 list-none">
       <news-all
         v-for="newsitem in news"
@@ -18,16 +17,20 @@
       >
       </news-all>
     </ul>
+
+    <new-news @add-news="addNews"></new-news>
   </div>
 </template>
 
 <script>
 import NewNews from "./NewNews.vue";
 import NewsAll from "./NewsAll.vue";
+//import BaseBox from "./BaseBox.vue";
 export default {
   components: {
     NewsAll,
     NewNews,
+    //BaseBox,
   },
   methods: {
     addNews(title, description, image_url, created_at, updated_at) {

@@ -1,10 +1,8 @@
 <template>
-  <header class="">
+  <header>
     <div class="main-header ">
-      <div>
-        <div class="logo">
-          <img alt="LondonBridge logo" src="@/assets/logo.svg" />
-        </div>
+      <div class="logo">
+        <img alt="LondonBridge logo" src="@/assets/logo.svg" />
       </div>
       <div class="header-london">
         <div class="">
@@ -28,13 +26,13 @@ export default {
 };
 </script>
 <style scoped>
-header {
+.main-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   justify-items: center;
   padding: 25px 10px;
-  min-height: 20vh;
+  height: 4vh;
 }
 h1 {
   color: #3ec7ff;
@@ -52,12 +50,10 @@ span {
 .logo {
   max-width: 50px;
 }
-.btn-news {
-  display: none;
-}
 
 img {
   vertical-align: middle;
+  padding-right: 5px;
 }
 
 @media (max-width: 615px) {

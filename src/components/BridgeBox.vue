@@ -82,8 +82,9 @@ export default {
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 170px;
-  left: 60px;
+  top: 30%;
+  left: 0;
+  right: 0;
   z-index: 9;
   width: 100%;
 }
@@ -91,10 +92,12 @@ export default {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 300px;
+  left: 0;
+  right: 0;
+  top: 30%;
   width: 100%;
-  height: 100%;
-  z-index: -1;
+  height: 5vh;
+  z-index: 8;
 }
 .newsall {
   min-width: 100%;
