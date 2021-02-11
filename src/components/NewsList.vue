@@ -5,11 +5,17 @@
     </header>
     <new-news @add-news="addNews"></new-news>
     <ul class="m-0 p-0 list-none">
-      <news-all>
-        v-for="newsitem in news" :key="newsitem.id" :id="newsitem.id"
-        :title="newsitem.title" :description:"newsitem.description"
-        :image_url:"newsitem.image_url" :created_at:"newsitem.created_at"
-        :updated_at:"newsitem.updated_at" @delete="deleteNews"
+      <news-all
+        v-for="newsitem in news"
+        :key="newsitem.id"
+        :id="newsitem.id"
+        :title="newsitem.title"
+        :description="newsitem.description"
+        :image_url="newsitem.image_url"
+        :created_at="newsitem.created_at"
+        :updated_at="newsitem.updated_at"
+        @delete="deleteNews"
+      >
       </news-all>
     </ul>
   </div>
@@ -35,6 +41,7 @@ export default {
       };
       this.news.push(addNewNews);
     },
+
     deleteNews(newsitemId) {
       this.news = this.news.filter((newsitem) => newsitem.id !== newsitemId);
     },
