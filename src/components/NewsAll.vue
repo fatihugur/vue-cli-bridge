@@ -2,7 +2,7 @@
   <div>
     <li>
       <h2>{{ title }}</h2>
-      <p>{{ description }}</p>
+      <p>{{ description.substr(0, 80) + "..." }}</p>
       <button @click="toggleNewsDetails">
         {{ newsDetailsAreVisible ? "Hide" : "Show" }}FullNews
       </button>

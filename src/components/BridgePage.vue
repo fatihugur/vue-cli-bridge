@@ -7,6 +7,7 @@
         </div>
       </div>
     </div>
+    <the-header></the-header>
     <!-- end newsall container -->
     <!-- container news button -->
     <div class="continer-news">
@@ -17,7 +18,6 @@
       </div>
     </div>
 
-    <the-header></the-header>
     <div class="container-main flex relative">
       <!-- container maps-->
       <div class="container-maps ">

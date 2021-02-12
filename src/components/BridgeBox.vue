@@ -97,7 +97,7 @@ export default {
   top: 30%;
   width: 100%;
   height: 5vh;
-  z-index: 8;
+  z-index: 9;
 }
 .newsall {
   min-width: 100%;

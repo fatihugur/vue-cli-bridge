@@ -28,11 +28,11 @@ export default {
 <style scoped>
 .main-header {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row;
   justify-content: flex-start;
   justify-items: center;
   padding: 25px 10px;
-  height: 4vh;
+  height: 10vh; */
 }
 h1 {
   color: #3ec7ff;
