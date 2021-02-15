@@ -1,0 +1,297 @@
+<template>
+    <div class="w-full h-full">
+        
+        >
+            <template slot-scope="{ google, map }">
+                <GoogleMapMarker
+                    v-for="(marker, markerIndex) in markers"
+                    :key="marker.id"
+                    :marker="marker"
+                    :google="google"
+                    :map="map"
+                >
+                    <template>
+                        <div
+                            :style="
+                                (marker.connection.connection_ends[0].services
+                                    .length == 2 || true
+                                    ? 'width: 260px'
+                                    : 'width: 150px') + ';max-width: 100%;'
+                            "
+                            class="connection-info-window columns is-0 is-multiline"
+                        >
+                            <div
+                                :class="{
+                                    'is-6':
+                                        marker.connection.connection_ends[0]
+                                            .services.length === 2,
+                                    'is-12':
+                                        marker.connection.connection_ends[0]
+                                            .services.length === 1
+                                }"
+                                v-for="(service, index) in marker.connection
+                                    .connection_ends[0].services"
+                                class="column"
+                            >
+                                <div
+                                    class="flex flex-grow-1 justify-between has-background-white rounded p-1"
+                                >
+                                    <span class="flex-grow-1">
+                                        <img
+                                            :src="
+                                                `/Assets/${service.type.name}.svg`
+                                            "
+                                            class="inline-block mr-2"
+                                            :alt="service.type.name"
+                                        />
+                                    </span>
+                                    <span class="flex flex-grow-0">
+                                        <span v-if="service">
+                                            <img
+                                                v-if="
+                                                    service.state.name ===
+                                                        'Waarschuwing'
+                                                "
+                                                class="inline-block"
+                                                src="/images/icons/Warning_orange.svg"
+                                                style="height: 18px"
+                                                alt="Waarschuwing"
+                                            />
+                                            <img
+                                                v-if="
+                                                    service.state.name ===
+                                                        'Actief'
+                                                "
+                                                class="inline-block"
+                                                src="/images/icons/front/green_light.svg"
+                                                alt="Actief"
+                                            />
+                                            <img
+                                                v-if="
+                                                    service.state.name ===
+                                                        'Waarschuwing'
+                                                "
+                                                class="inline-block"
+                                                src="/images/icons/front/green_light.svg"
+                                                alt="Waarschuwing"
+                                            />
+                                            <img
+                                                v-if="
+                                                    service.state.name ===
+                                                        'Inactief'
+                                                "
+                                                src="/images/icons/front/red_light.svg"
+                                                class="inline-block"
+                                                alt="Inactief"
+                                            />
+                                        </span>
+                                        <span v-else>
+                                            <img
+                                                class="inline-block"
+                                                src="/images/icons/front/inactive_light.svg"
+                                                alt="Geen licht"
+                                            />
+                                        </span>
+                                        <span
+                                            v-if="
+                                                marker.connection
+                                                    .connection_ends[1]
+                                                    .services[index]
+                                            "
+                                        >
+                                            <img
+                                                v-if="
+                                                    marker.connection
+                                                        .connection_ends[1]
+                                                        .services[index].state
+                                                        .name === 'Waarschuwing'
+                                                "
+                                                class="inline-block"
+                                                src="/images/icons/Warning_orange.svg"
+                                                style="height: 18px"
+                                                alt="Waarschuwing"
+                                            />
+                                            <img
+                                                v-if="
+                                                    marker.connection
+                                                        .connection_ends[1]
+                                                        .services[index].state
+                                                        .name === 'Actief'
+                                                "
+                                                class="inline-block"
+                                                src="/images/icons/front/green_light.svg"
+                                                alt="Actief"
+                                            />
+                                            <img
+                                                v-if="
+                                                    marker.connection
+                                                        .connection_ends[1]
+                                                        .services[index].state
+                                                        .name === 'Waarschuwing'
+                                                "
+                                                class="inline-block"
+                                                src="/images/icons/front/green_light.svg"
+                                                alt="Waarschuwing"
+                                            />
+                                            <img
+                                                v-if="
+                                                    marker.connection
+                                                        .connection_ends[1]
+                                                        .services[index].state
+                                                        .name === 'Inactief'
+                                                "
+                                                class="inline-block"
+                                                src="/images/icons/front/red_light.svg"
+                                                alt="Inactief"
+                                            />
+                                        </span>
+                                        <span v-else>
+                                            <img
+                                                class="inline-block"
+                                                src="/images/icons/front/inactive_light.svg"
+                                                alt="Geen licht"
+                                            />
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="column is-12">
+                                <b-button
+                                    :type="
+                                        !isMobile
+                                            ? !marker.connection.open
+                                                ? 'is-primary'
+                                                : 'is-warning'
+                                            : $store.state.connections
+                                                  .carousel_active_item ===
+                                              markerIndex
+                                            ? 'is-warning'
+                                            : 'is-primary'
+                                    "
+                                    @click.prevent="
+                                        handleMarkerOnClick(marker, markerIndex)
+                                    "
+                                    expanded
+                                >
+                                    {{ marker.connection.name }}
+                                </b-button>
+                            </div>
+                        </div>
+                    </template>
+                </GoogleMapMarker>
+                <GoogleMapLine
+                    v-for="line in lines"
+                    :key="line.id"
+                    :path.sync="line.path"
+                    :google="google"
+                    :map="map"
+                />
+            </template>
+        </GoogleMapLoader>
+    </div>
+</template>
+
+<script>
+import GoogleMapLoader from "./GoogleMapLoader";
+import GoogleMapMarker from "./GoogleMapMarker";
+import GoogleMapLine from "./GoogleMapLine";
+
+import { mapSettings } from "../constants/mapSettings";
+
+import { mapGetters } from "vuex";
+
+export default {
+    components: {
+        GoogleMapLoader,
+        GoogleMapMarker,
+        GoogleMapLine
+    },
+    props: {
+        show: {
+            type: Boolean
+        }
+    },
+    data() {
+        return {
+            nameRules: [v => !!v || "Naam is vereist"],
+            emailRules: [
+                v => !!v || "Email is vereist",
+                v => /.+@.+\..+/.test(v) || "E-mail moet geldig zijn"
+            ]
+        };
+    },
+    computed: {
+        ...mapGetters({
+            connections: "connections/all",
+            mapCenter: "googleMaps/center"
+        }),
+        isMobile() {
+            return this.$store.state.settings.isMobile;
+        },
+        mapConfig() {
+            return {
+                ...mapSettings,
+                center: this.mapCenter
+            };
+        },
+        lines() {
+            if (!this.connections.length) {
+                return [];
+            }
+
+            return this.connections.map(connection => ({
+                path: [
+                    {
+                        lat: connection.connection_ends[0].lat,
+                        lng: connection.connection_ends[0].long
+                    },
+                    {
+                        lat: connection.connection_ends[1].lat,
+                        lng: connection.connection_ends[1].long
+                    }
+                ]
+            }));
+        },
+        labels() {
+            if (!this.connections.length) {
+                return [];
+            }
+
+            return this.connections.map(connection => ({
+                position: {
+                    lat: connection.lat,
+                    lng: connection.long
+                },
+                content: {
+                    content: connection.id
+                }
+            }));
+        },
+        markers() {
+            return this.connections.map((connection, index) => ({
+                connection: connection,
+                position: {
+                    lat: connection.lat,
+                    lng: connection.long
+                }
+            }));
+        }
+    },
+    methods: {
+        handleMarkerOnClick(marker, index) {
+            marker.connection.open = !marker.connection.open;
+            this.$store.state.connections.carousel_active_item = index;
+
+            // this.$store.commit('googleMaps/SET_CENTER', marker.position);
+        }
+    }
+};
+</script>
+
+<style>
+@media (max-width: 768px) {
+    .connection-info-window {
+        width: auto !important;
+    }
+}
+</style>

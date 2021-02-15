@@ -1,14 +1,14 @@
 <template>
-  <bridge-page></bridge-page>
+  <bridge-home></bridge-home>
 </template>
 
 <script>
-import BridgePage from "@/components/BridgePage.vue";
+import BridgeHome from "./components/BridgeHome.vue";
 
 export default {
   name: "App",
   components: {
-    BridgePage,
+    BridgeHome,
   },
 };
 </script>

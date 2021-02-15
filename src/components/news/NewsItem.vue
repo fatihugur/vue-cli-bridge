@@ -1,44 +1,65 @@
 <template>
   <div>
-    <section class="show-news">
-      <div class="show-news-img">
-        <img src="" alt="" />
-      </div>
-      <div class="show-news">
-        <h1>Onderhoud liften Millenium</h1>
-        <div class="show-news-time">
-          <p>{{ loaded }}</p>
-          <span>{{ lastLoaded }}</span>
+    <li>
+      <h2>{{ title }}</h2>
+      <p>{{ description.substr(0, 80) + "..." }}</p>
+      <button @click="toggleNewsDetails">
+        {{ newsDetailsAreVisible ? "Hide" : "Show" }}FullNews
+      </button>
+      <ul v-if="newsDetailsAreVisible">
+        <div>
+          <img src="" alt="" />
+          <li>{{ image_url }}</li>
         </div>
-        <div class="show-news-one">
-          <p>{{ news }}</p>
+        <div class="newsdetails">
+          <li>{{ created_at }}</li>
+          <li>{{ updated_at }}</li>
+          <li>{{ title }}</li>
+          <li>{{ description }}</li>
         </div>
-        <div class="show-news-warning">
-          <p>{{ warning }}</p>
-        </div>
-      </div>
-    </section>
+      </ul>
+      <button @click="$emit('delete', id)">Delete News</button>
+    </li>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    created_at: {
+      type: String,
+      required: true,
+    },
+    updated_at: {
+      type: String,
+      required: true,
+    },
+  },
+  emits: ["delete"],
   data() {
     return {
-      //bridges: [],
-      //  message: "London",
-      loaded:
-        new Date().toDateString() + " - " + new Date().toLocaleTimeString(),
-      lastLoaded:
-        "Laatst gewijzigd op " +
-        new Date().toLocaleDateString() +
-        " om " +
-        new Date().toLocaleTimeString(),
-      news:
-        "Op 23-04-2020 krijgen de liften een onderhoud. Doorheen de dag zullen ze tijdelijk buiten gebruik zijn. Onze excuses voor het ongemak. ",
-      warning:
-        "In het kader van de maatregelen tegen het CORONAvirus: HOU AUB VOLDOENDE AFSTAND",
+      newsDetailsAreVisible: false,
     };
+  },
+  methods: {
+    toggleNewsDetails() {
+      this.newsDetailsAreVisible = !this.newsDetailsAreVisible;
+    },
+    // deleteNews(){
+    //   this.$emit('delete');
+    // }
   },
 };
 </script>

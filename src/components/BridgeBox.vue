@@ -85,7 +85,7 @@ export default {
   top: 30%;
   left: 0;
   right: 0;
-  z-index: 9;
+  z-index: 10;
   width: 100%;
 }
 .info-box {

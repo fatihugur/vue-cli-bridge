@@ -36,8 +36,8 @@
 <script>
 import BridgeBox from "./BridgeBox.vue";
 import TheHeader from "./TheHeader.vue";
-import TheMap from "./TheMap.vue";
-import NewsList from "./NewsList.vue";
+import TheMap from "./leafletmap/TheMap.vue";
+import NewsList from "./news/NewsList.vue";
 
 export default {
   data() {
