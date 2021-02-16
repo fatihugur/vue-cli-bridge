@@ -89,13 +89,13 @@ export default {
       //   }
       // );
 
-      var mymap = L.map("mapContainer").setView([51.499, -0.1], 14);
+      var mymap = L.map("mapContainer").setView([51.499, -0.1], 12);
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         {
           attribution:
             'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-          maxZoom: 18,
+          maxZoom: 15,
           id: "mapbox/streets-v11",
           accessToken:
             "pk.eyJ1IjoiZmF0aWh1Z3VyIiwiYSI6ImNra3M3cjg5czBiMW0yb3A2bnkzaDZ5NGoifQ.nQzrWXrV3iev_guKGxn5Ew",

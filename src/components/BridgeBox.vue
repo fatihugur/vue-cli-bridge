@@ -86,8 +86,7 @@ export default {
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 30%;
-  left: 0;
+  top: 25%;
   right: 0;
   z-index: 10;
   width: 100%;
@@ -96,8 +95,8 @@ export default {
   display: flex;
   flex-direction: column;
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 30%;
+  top: 30%;
   width: 100%;
   height: 5vh;
   z-index: 9;
