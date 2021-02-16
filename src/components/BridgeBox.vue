@@ -86,8 +86,8 @@ export default {
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 25%;
-  right: 0;
+  top: 35%;
+  left: 40%;
   z-index: 10;
   width: 100%;
 }
