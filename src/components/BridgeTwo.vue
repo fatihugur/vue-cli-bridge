@@ -172,6 +172,7 @@ export default {
   data() {
     return {
       infoIsVisible: false,
+      boxIsVisible: true,
 
       // secondBridge: [
       //   {
@@ -188,6 +189,7 @@ export default {
     toggleShowInfo() {
       this.infoIsVisible = !this.infoIsVisible;
     },
+
     // deleteNews(){
     //   this.$emit('delete');
     // }

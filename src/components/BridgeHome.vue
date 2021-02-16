@@ -1,34 +1,31 @@
 <template>
   <div class="hello-bridge">
     <div class="w-full">
-      <div class="h-full">
-        <div class="newsall z-55 p-4">
-          <news-list v-if="selectedList === 'news-list'"></news-list>
+      <div class=" flex h-full">
+        <div class="main-header">
+          <the-header></the-header>
+          <div class="continer-news">
+            <div class="news">
+              <button
+                @click="setSelectedList('news-list')"
+                class="btn btn-news"
+              >
+                <img alt="news icon" src="@/assets/icon_news.svg" />
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <the-header></the-header>
-    <!-- end newsall container -->
-    <!-- container news button -->
-    <div class="continer-news">
-      <div class="news">
-        <button @click="setSelectedList('news-list')" class="btn btn-news">
-          <img alt="news icon" src="@/assets/icon_news.svg" />
-        </button>
-      </div>
-    </div>
 
-    <div class="container-main flex relative">
-      <!-- container maps-->
-      <div class="container-maps ">
-        <div class="map w-full h-full overflow-hidden">
-          <the-map></the-map>
+        <div class="absolute inline-block z-55 h-full p-4">
+          <div class="flex h-full">
+            <news-list v-if="selectedList === 'news-list'"></news-list>
+          </div>
         </div>
-        <div>
+        <div class="absolute">
           <bridge-box></bridge-box>
         </div>
+        <the-map></the-map>
       </div>
-      <!-- end container maps -->
     </div>
   </div>
 </template>
@@ -43,6 +40,8 @@ export default {
   data() {
     return {
       selectedList: true,
+      // expand_mobile_connections: false,
+      // connections: true,
     };
   },
   components: {
@@ -51,10 +50,38 @@ export default {
     BridgeBox,
     NewsList,
   },
+  // computed: {
+  //   carouselActiveItem() {
+  //     return this.$store.state.connections.carousel_active_item;
+  //   },
+  //   isMobile() {
+  //     return this.$store.state.settings.isMobile;
+  //   },
+  // },
   methods: {
     setSelectedList(list) {
       this.selectedList = list;
     },
+    // handleTap() {
+    //   this.expand_mobile_connections = !this.expand_mobile_connections;
+    // },
+    // handleSwipe(direction) {
+    //   if (direction === "top" || direction === "up") {
+    //     this.expandMobileConnections();
+    //   }
+    //   if (direction === "bottom" || direction === "down") {
+    //     this.hideMobileConnections();
+    //   }
+    // },
+    // expandMobileConnections() {
+    //   this.expand_mobile_connections = true;
+    // },
+    // hideMobileConnections() {
+    //   this.expand_mobile_connections = false;
+    // },
+    // handleCarouselChange(index) {
+    //   this.$store.state.connections.carousel_active_item = index;
+    // },
   },
 };
 </script>

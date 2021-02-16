@@ -23,7 +23,12 @@
 </template>
 
 <script>
+import BridgeEen from "/BridgeEen.vue";
+
 export default {
+  components: {
+    BridgeEen,
+  },
   data() {
     return {
       bridges: [

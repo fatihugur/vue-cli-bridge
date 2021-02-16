@@ -22,9 +22,13 @@
         </button>
       </div>
     </div>
-    <div class="info-box">
+    <div class="info-box box-1">
       <base-box>
         <bridge-one v-if="selectedTab === 'bridge-one'"></bridge-one>
+      </base-box>
+    </div>
+    <div class="info-box box-2">
+      <base-box>
         <bridge-two v-if="selectedTab === 'bridge-two'"></bridge-two>
       </base-box>
     </div>
@@ -94,10 +98,15 @@ export default {
   position: absolute;
   left: 0;
   right: 0;
-  top: 30%;
   width: 100%;
   height: 5vh;
   z-index: 9;
+}
+.box-1 {
+  top: 30%;
+}
+.box-2 {
+  top: 50%;
 }
 .newsall {
   min-width: 100%;

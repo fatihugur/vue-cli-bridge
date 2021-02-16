@@ -2,5 +2,40 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+//iconen
+//@import "~@mdi/font/scss/materialdesignicons";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+//@import "~@fortawesome/fontawesome-free/scss/solid";
+//@import "~@fortawesome/fontawesome-free/scss/regular";
+//@import "~@fortawesome/fontawesome-free/scss/brands";
+
 $blue: #3ec7ff;
 $primary-bg: #2c3035;
+
+// .icon-logo {
+//   background-color: red;
+//   -webkit-mask: url(/svg/logo.svg) no-repeat center;
+//   mask: url(/svg/logo.svg) no-repeat center;
+// }
+
+.has-icon {
+  .icon {
+    display: block;
+    width: 69px;
+    height: 69px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    // &.settings {
+    //     background-image: url("/images/icons/Instellingen.svg");
+    //     background-repeat: no-repeat;
+    //     /* Other styles here */
+    // }
+
+    // &.news {
+    //     background-image: url("/images/icons/Nieuwsberichten.svg");
+    //     background-repeat: no-repeat;
+    //     /* Other styles here */
+    // }
+  }
+}
