@@ -42,16 +42,16 @@ export default {
     //   // Adding layer to the map
     //   mymap.addLayer(layer);
 
-    //   var latlang = [
-    //     [
-    //       [51.5106928, -0.09846100000000002],
-    //       [51.5086182, -0.09859819999999997],
-    //     ],
-    //     [
-    //       [51.5116521, -0.10426800000000003],
-    //       [51.5109589, -0.10436809999999996],
-    //     ],
-    //   ];
+    // var latlang = [
+    //   [
+    //     [51.5106928, -0.09846100000000002],
+    //     [51.5086182, -0.09859819999999997],
+    //   ],
+    //   [
+    //     [51.5116521, -0.10426800000000003],
+    //     [51.5109589, -0.10436809999999996],
+    //   ],
+    // ];
     //   var multiPolyLineOptions = {
     //     color: "red",
     //     weight: 9,
@@ -88,6 +88,7 @@ export default {
       //     opacity: 0.6,
       //   }
       // );
+
       var mymap = L.map("mapContainer").setView([51.499, -0.1], 14);
       L.tileLayer(
         "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
@@ -101,8 +102,18 @@ export default {
         }
       ).addTo(mymap);
 
-      // mymap.fitBounds(polyline1.getBounds());
-      // mymap.fitBounds(polyline2.getBounds());
+      var latlngs = [
+        [
+          [51.5106928, -0.09846100000000002],
+          [51.5086182, -0.09859819999999997],
+        ],
+        [
+          [51.5116521, -0.10426800000000003],
+          [51.5109589, -0.10436809999999996],
+        ],
+      ];
+      var polyline = L.polyline(latlngs, { color: "blue" }).addTo(mymap);
+      mymap.fitBounds(polyline.getBounds());
     },
   },
   mounted() {
