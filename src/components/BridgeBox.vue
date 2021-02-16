@@ -102,10 +102,10 @@ export default {
   z-index: 9;
 }
 .box-1 {
-  top: 30%;
+  top: 33%;
 }
 .box-2 {
-  top: 50%;
+  top: 40%;
 }
 .newsall {
   min-width: 100%;
