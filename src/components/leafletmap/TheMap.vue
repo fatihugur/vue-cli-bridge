@@ -108,11 +108,15 @@ export default {
           [51.5086182, -0.09859819999999997],
         ],
         [
-          [51.5116521, -0.10426800000000003],
           [51.5109589, -0.10436809999999996],
+          [51.5087357, -0.10434810000000005],
         ],
       ];
-      var polyline = L.polyline(latlngs, { color: "blue" }).addTo(mymap);
+      var polyline = L.polyline(latlngs, {
+        color: "blue",
+        weight: 6,
+        opacity: 0.6,
+      }).addTo(mymap);
       mymap.fitBounds(polyline.getBounds());
     },
   },
