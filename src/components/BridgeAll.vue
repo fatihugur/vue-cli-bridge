@@ -1,6 +1,6 @@
 <template>
-  <div class="firstbridge flex">
-    <div class="box_1">
+  <div class="flex">
+    <div class="box-1">
       <header>
         <!-- <h1>{{ bridge.name }}</h1> -->
       </header>

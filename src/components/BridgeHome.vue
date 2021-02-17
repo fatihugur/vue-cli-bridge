@@ -1,33 +1,40 @@
 <template>
-  <div class="hello-bridge">
-    <div class="w-full">
-      <div class=" flex h-full">
-        <div class="main-header">
-          <the-header></the-header>
-          <div class="continer-news">
-            <div class="news">
-              <button
-                @click="setSelectedList('news-list')"
-                class="btn btn-news"
-              >
-                <img alt="news icon" src="@/assets/icon_news.svg" />
-              </button>
-            </div>
+  <div class="w-full">
+    <div class=" flex h-full">
+      <!--Header-Logo en NieuwsIcon-->
+      <div class="main-header">
+        <the-header></the-header>
+        <div class="continer-news">
+          <div class="news">
+            <button @click="setSelectedList('news-list')" class="btn btn-news">
+              <img alt="news icon" src="@/assets/icon_news.svg" />
+            </button>
           </div>
         </div>
+      </div>
 
+      <!--MOBILE-->
+      <div class="h-full overflow-hidden">
+        <!--NewsList NewsItem-->
         <div class="absolute inline-block z-55 h-full p-4">
           <div class="flex h-full">
             <news-list v-if="selectedList === 'news-list'"></news-list>
           </div>
         </div>
-        <div class="absolute">
-          <bridge-all></bridge-all>
-          <!-- <bridge-box></bridge-box> -->
-        </div>
-
-        <the-map></the-map>
       </div>
+      <!--DESKTOP-->
+
+      <!--BridgeAll BridgeItem-->
+      <div class="absolute left-0 top-0 w-full h-full overflow-hidden">
+        <div class="float-right sm:w-1/3 md:w-1/4 h-0">
+          <div class="absolute top-10 right-0 p-2 z-10">
+            <bridge-all class="all"></bridge-all>
+            <!-- <bridge-box></bridge-box> -->
+          </div>
+        </div>
+      </div>
+
+      <the-map></the-map>
     </div>
   </div>
 </template>
@@ -92,6 +99,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.all {
+  background: tomato;
+  max-width: 300px;
+  top: 30;
+  right: 0;
+  left: 0;
+}
 map {
   width: 100%;
   min-height: 100vh;
