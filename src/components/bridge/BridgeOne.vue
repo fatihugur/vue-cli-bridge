@@ -18,9 +18,7 @@
             {{ infoIsVisible ? "Hide" : "Show" }}
           </button> -->
           <b-button @click="toggleShowInfo" class="mr-2">
-            <b-icon
-              :icon="infoIsVisible ? chevron - up : chevron - down"
-            ></b-icon>
+            <b-icon></b-icon>
             Details
           </b-button>
         </span>

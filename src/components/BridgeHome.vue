@@ -22,8 +22,10 @@
           </div>
         </div>
         <div class="absolute">
-          <bridge-box></bridge-box>
+          <bridge-all></bridge-all>
+          <!-- <bridge-box></bridge-box> -->
         </div>
+
         <the-map></the-map>
       </div>
     </div>
@@ -31,7 +33,8 @@
 </template>
 
 <script>
-import BridgeBox from "./BridgeBox.vue";
+import BridgeAll from "./BridgeAll.vue";
+//import BridgeBox from "./BridgeBox.vue";
 import TheHeader from "./TheHeader.vue";
 import TheMap from "./leafletmap/TheMap.vue";
 import NewsList from "./news/NewsList.vue";
@@ -47,7 +50,8 @@ export default {
   components: {
     TheHeader,
     TheMap,
-    BridgeBox,
+    //BridgeBox,
+    BridgeAll,
     NewsList,
   },
   // computed: {

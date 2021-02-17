@@ -2,33 +2,61 @@
   <div class="firstbridge flex">
     <div class="box_1">
       <header>
-        <h1>BridgeName</h1>
+        <!-- <h1>{{ bridge.name }}</h1> -->
       </header>
       <ul class="m-0 p-0 list-none">
         <bridge-item
           v-for="bridge in bridges"
           :key="bridge.id"
           :id="bridge.id"
+          :state_id="bridge.state_id"
           :name="bridge.name"
           :current_info="bridge.current_info"
           :lat="bridge.lat"
           :long="bridge.long"
           :connection_ends="bridge.connection_ends"
           :accessibility="bridge.accessibility"
+          @is-bridge="toggleBridgeBoxStatus"
         >
+          <base-box></base-box>
         </bridge-item>
+        <bridge-button>
+          <base-button @buttonClicked="toggleBridgeBoxStatus"></base-button>
+        </bridge-button>
+        <bridge-button>
+          <base-button @buttonClicked="toggleBridgeBoxStatus"></base-button>
+        </bridge-button>
+        <!-- <bridge-item>
+          <base-box></base-box>
+        </bridge-item> -->
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-import BridgeEen from "/BridgeEen.vue";
+import BridgeItem from "./BridgeItem.vue";
+import BridgeButton from "./BridgeButton.vue";
+import BaseBox from "./UI/BaseBox.vue";
+import BaseButton from "./UI/BaseButton.vue";
 
 export default {
   components: {
-    BridgeEen,
+    BridgeItem,
+    BridgeButton,
+    BaseBox,
+    BaseButton,
   },
+  methods: {
+    toggleBridgeBoxStatus(bridgeId) {
+      console.log("button");
+      const identifiedBridge = this.bridges.find(
+        (bridge) => bridge.id === bridgeId
+      );
+      identifiedBridge.isBridge = !identifiedBridge.isBridge;
+    },
+  },
+
   data() {
     return {
       bridges: [
@@ -39,6 +67,7 @@ export default {
           current_info: "Millenium bridge is open.",
           lat: 51.5111837,
           long: -0.09832070000000004,
+          isBridge: true,
           connection_ends: [
             {
               id: 1,
@@ -136,6 +165,7 @@ export default {
             "weekdagen: LO 7u-18u / RO 7u15-18u15 weekends/feestdagen: LO 10u-21u / RO 10u15-21u15",
           lat: 51.5116521,
           long: -0.10426800000000003,
+          isBridge: true,
           connection_ends: [
             {
               id: 9,
@@ -265,22 +295,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.firstbridge {
-  width: 100%;
-  min-width: 300px;
-}
-
-.box_header,
-.box_liften,
-.box_stairs {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-img.mr-2 {
-  width: 20px;
-}
-</style>
+<style scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" :class="mode">
+  <button :type="type" :class="mode" @click="buttonClick">
     <slot></slot>
   </button>
 </template>
@@ -7,6 +7,11 @@
 <script>
 export default {
   props: ["type", "mode"],
+  methods: {
+    buttonClick() {
+      this.$emit("buttonClicked");
+    },
+  },
 };
 </script>
 

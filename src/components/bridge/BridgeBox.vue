@@ -22,6 +22,7 @@
         </button>
       </div>
     </div>
+
     <div class="info-box box-1">
       <base-box>
         <bridge-one v-if="selectedTab === 'bridge-one'"></bridge-one>
