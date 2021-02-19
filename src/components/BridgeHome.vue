@@ -2,29 +2,36 @@
   <div class="w-full">
     <div class=" flex h-full">
       <!--Header-Logo en NieuwsIcon-->
-      <div class="main-header">
-        <the-header></the-header>
-        <div class="continer-news">
-          <div class="news">
-            <button @click="setSelectedList('news-list')" class="btn btn-news">
-              <img alt="news icon" src="@/assets/icon_news.svg" />
-            </button>
+      <div class="absolute">
+        <div class="main-header">
+          <the-header></the-header>
+          <div class="continer-news">
+            <div class="news">
+              <button
+                @click="setSelectedList('news-list')"
+                class="btn btn-news"
+              >
+                <img alt="news icon" src="@/assets/icon_news.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--MOBILE-->
+        <div class="h-full overflow-hidden">
+          <!--NewsList NewsItem-->
+          <div class="absolute inline-block z-55 h-full p-4">
+            <div class="flex h-full">
+              <news-list v-if="selectedList === 'news-list'"></news-list>
+            </div>
           </div>
         </div>
       </div>
 
-      <!--MOBILE-->
-      <div class="h-full overflow-hidden">
-        <!--NewsList NewsItem-->
-        <div class="absolute inline-block z-55 h-full p-4">
-          <div class="flex h-full">
-            <news-list v-if="selectedList === 'news-list'"></news-list>
-          </div>
-        </div>
-      </div>
       <!--DESKTOP-->
 
       <!--BridgeAll BridgeItem-->
+
       <div class="absolute left-0 top-0 w-full h-full overflow-hidden">
         <div class="float-right sm:w-1/3 md:w-1/4 h-0">
           <div class="absolute top-10 right-0 p-2 z-10">

@@ -1,9 +1,20 @@
 <template>
-  <div class="flex">
-    <div class="box-1">
-      <header>
-        <!-- <h1>{{ bridge.name }}</h1> -->
-      </header>
+  <div class="bridge-box">
+    <div class="bridge-buttons">
+      <div class="flex">
+        <div>
+          <bridge-button>
+            <base-button @buttonClicked="toggleBridgeBoxStatus"></base-button>
+          </bridge-button>
+        </div>
+        <div>
+          <bridge-button>
+            <base-button @buttonClicked="toggleBridgeBoxStatus"></base-button>
+          </bridge-button>
+        </div>
+      </div>
+    </div>
+    <div class="info-box">
       <ul class="m-0 p-0 list-none">
         <bridge-item
           v-for="bridge in bridges"
@@ -20,15 +31,6 @@
         >
           <base-box></base-box>
         </bridge-item>
-        <bridge-button>
-          <base-button @buttonClicked="toggleBridgeBoxStatus"></base-button>
-        </bridge-button>
-        <bridge-button>
-          <base-button @buttonClicked="toggleBridgeBoxStatus"></base-button>
-        </bridge-button>
-        <!-- <bridge-item>
-          <base-box></base-box>
-        </bridge-item> -->
       </ul>
     </div>
   </div>
@@ -295,4 +297,34 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.bridge-box {
+  display: flex;
+  flex-direction: column;
+}
+.bridge-buttons {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  z-index: 10;
+  width: 100px;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 1%;
+  top: 20%;
+  width: 300px;
+  height: 5vh;
+  z-index: 9;
+  overflow: scroll;
+  height: auto;
+  max-height: 80vh;
+}
+</style>
